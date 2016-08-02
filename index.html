@@ -3,17 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>The FUTURE</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="index.css">
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 
 <body>
-    <div id="container"></div>
-    <script src="bundle.js"></script>
+    <div id="titleBox">
+      <span>THE FUTURE BUS</span>
+    </div>
+    <br/>
+    <div id="clock">
+      <span id="time">TIME</span>
+    </div>
+    <br/>
+    <div id="status">
+      <textarea id="statusBox">
+        TEST
+      </textarea>
+    </div>
+    <br/>
+    <div>
+      <span id="Amount">Remaining Seat</span>
+      <br/>
+      <span id="remaining">15</span>
+    </div>
+    <div>
+      <button disabled id="entered">entered: 10</button>
+      <button disabled id="left">left: 5</button>
+    </div>
+    <div>
+      <button id="reserve">Reserve</button>
+      <button id="cancel">Cancel</button>
+    </div>
+
 </body>
 
 </html>
