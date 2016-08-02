@@ -55,6 +55,7 @@ body {
 
 #statusBox {
   height: 100px;
+  text-align: center;
 }
 
 #textarea {

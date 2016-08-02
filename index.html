@@ -48,13 +48,13 @@
             <img id="Amount" class='img-responsive container' src='./images/chemical.png' />
 
             <br/>
-            <span id="remaining">15</span>
+            <span id="remaining">20</span>
         </div>
         <div>
           <br />
-            <span id="entered">ENTERED: 10</span>
+            <span id="entered">ENTERED: 0</span>
             <br />
-            <span id="left" >LEFT: 5</span>
+            <span id="left" >LEFT: 0</span>
             <br />
             <br />
         </div>
@@ -114,7 +114,7 @@
                         }
                         entered.text("ENTERED: " + enter);
                         left.text("LEFT: " + leave);
-                        remaining.html(enter - leave + 20);
+                        remaining.html(20 - enter + leave);
                         currentInput = data;
                     }
                 });
