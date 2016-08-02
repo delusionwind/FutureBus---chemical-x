@@ -1,0 +1,62 @@
+@font-face {
+    font-family: Clingy;
+    src: url("http://db.onlinewebfonts.com/t/6f6ce8c6a900531fdcd8b0ce6aa874ad.eot");
+    src: url("http://db.onlinewebfonts.com/t/6f6ce8c6a900531fdcd8b0ce6aa874ad.eot?#iefix") format("embedded-opentype"),
+    url("http://db.onlinewebfonts.com/t/6f6ce8c6a900531fdcd8b0ce6aa874ad.woff2") format("woff2"),
+    url("http://db.onlinewebfonts.com/t/6f6ce8c6a900531fdcd8b0ce6aa874ad.woff") format("woff"),
+    url("http://db.onlinewebfonts.com/t/6f6ce8c6a900531fdcd8b0ce6aa874ad.ttf") format("truetype"),
+    url("http://db.onlinewebfonts.com/t/6f6ce8c6a900531fdcd8b0ce6aa874ad.svg#Clingy") format("svg");
+}
+html {
+  font-family: Clingy;
+}
+#titleBox {
+  background-color: #DCC6E0;
+  font-size: 50px;
+}
+
+#reserve {
+  background-color: #90C695;
+  font-size: large;
+}
+
+#cancel {
+  background-color: #E26A6A;
+  font-size: large;
+}
+
+#entered {
+  text-align: center;
+  color: white;
+}
+
+#left {
+  color: white;
+}
+
+.container {
+  font-family: Clingy;
+  align-content: center;
+  background-color: #DCC6E0;
+  text-align: center;
+  font-size: 25px;
+}
+
+body {
+  background-color: #DCC6E0;
+  background-image: url('./images/bg.jpg');
+}
+
+#remaining {
+  text-align: center;
+  font-size: larger;
+  color: #674172;
+}
+
+#statusBox {
+  height: 100px;
+}
+
+#textarea {
+  font-size: large;
+}

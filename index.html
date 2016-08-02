@@ -5,41 +5,121 @@
     <meta charset="UTF-8">
     <title>The FUTURE</title>
     <!-- Latest compiled and minified CSS -->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="index.css">
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body>
-    <div id="titleBox">
-      <span>THE FUTURE BUS</span>
+    <div class="container">
+        <div id="titleBox" class="container">
+            <img class='img-responsive' src='./images/head.png' />
+            <!-- <span>THE FUTURE BUS</span> -->
+        </div>
+        <br/>
+        <div id="clock" class="container">
+
+            <iframe id="time" src="http://free.timeanddate.com/clock/i5b6n2vd/n28/fn6/fs16/fcfff/tcaea8d3/ftb/bas2/bat1/bacfff/pd3/tt0/tw1/th1/ta1/tb4" frameborder="0" width="203" height="46"></iframe>
+            <br />
+            <br />
+            <iframe src="http://free.timeanddate.com/clock/i5b6n8wa/n28/szw210/szh210/hoc000/hbw3/cf100/hgr0/fav0/fiv0/mqc000/mqs3/mql25/mqw6/mqd96/mhc000/mhs3/mhl20/mhw6/mhd96/mmc000/mms3/mml10/mmw2/mmd96/hhw16/hmw16/hmr4/hsc000/hss3/hsl90" frameborder="0" width="210"
+                height="210"></iframe>
+
+        </div>
+        <br/>
+        <div id="status">
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea disabled id="statusBox" class="materialize-textarea"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br/>
+        <div>
+            <img id="Amount" class='img-responsive container' src='./images/chemical.png' />
+
+            <br/>
+            <span id="remaining">15</span>
+        </div>
+        <div>
+          <br />
+            <span id="entered">ENTERED: 10</span>
+            <br />
+            <span id="left" >LEFT: 5</span>
+            <br />
+            <br />
+        </div>
+        <div>
+            <button id="reserve" class="btn waves-effect waves-light" type="submit" name="action">reserve ⟼
+            </button>
+            <button id="cancel" class="btn waves-effect waves-light" type="submit" name="action">cancel
+            </button>
+        </div>
     </div>
-    <br/>
-    <div id="clock">
-      <span id="time">TIME</span>
-    </div>
-    <br/>
-    <div id="status">
-      <textarea id="statusBox">
-        TEST
-      </textarea>
-    </div>
-    <br/>
-    <div>
-      <span id="Amount">Remaining Seat</span>
-      <br/>
-      <span id="remaining">15</span>
-    </div>
-    <div>
-      <button disabled id="entered">entered: 10</button>
-      <button disabled id="left">left: 5</button>
-    </div>
-    <div>
-      <button id="reserve">Reserve</button>
-      <button id="cancel">Cancel</button>
-    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+    <script type="text/javascript">
+        var reserveData = $('#statusBox');
+        var reserveButton = $('#reserve');
+        var cancelButton = $('#cancel');
+        var reservation = false;
+        var remaining = $('#remaining');
+        var entered = $('#entered');
+        var left = $('#left');
+        var currentInput = '';
+
+
+        reserveButton.click(function() {
+            var date = new Date();
+            var now = date.toUTCString();
+            reservation = true;
+            reserveData.append("\nReserved    " + now);
+            reserveData.scrollTop(reserveData[0].scrollHeight);
+
+        });
+
+        cancelButton.click(function() {
+            var date = new Date();
+            var now = date.toUTCString();
+            if (reservation === true) {
+                reserveData.append("\nCanceled    " + now);
+                reservation = false;
+                reserveData.scrollTop(reserveData[0].scrollHeight);
+            }
+        });
+
+        setInterval(function() {
+            $.ajax({
+                    url: 'http://10.32.176.4/chemical-x'
+                })
+                .done(function(data) {
+                    if (currentInput !== data) {
+                        var dataComponent = data.split(" ");
+                        var enter = parseInt(dataComponent[0]);
+                        var leave = parseInt(dataComponent[1]);
+
+                        var cancel = parseInt(dataComponent[2]);
+                        if (cancel === 1) {
+                            cancelButton.click();
+                        }
+                        entered.text("ENTERED: " + enter);
+                        left.text("LEFT: " + leave);
+                        remaining.html(enter - leave + 20);
+                        currentInput = data;
+                    }
+                });
+        }, 1000)
+    </script>
 
 </body>
 
